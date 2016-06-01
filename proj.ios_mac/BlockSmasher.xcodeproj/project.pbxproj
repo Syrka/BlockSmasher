@@ -72,6 +72,9 @@
 		FF2A92231CE0ECF000B424CA /* LevelOneScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF2A92211CE0ECF000B424CA /* LevelOneScene.cpp */; };
 		FF2A92251CE0F09700B424CA /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2A92241CE0F09700B424CA /* ball.png */; };
 		FF2A92271CE0F34000B424CA /* ball.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF2A92261CE0F34000B424CA /* ball.jpg */; };
+		FF615F4A1CFD9CD00017B925 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF615F491CFD9CD00017B925 /* bar.png */; };
+		FF8FB6BF1CFC845C00CDB531 /* images in Resources */ = {isa = PBXBuildFile; fileRef = FF8FB6BE1CFC845C00CDB531 /* images */; };
+		FFC048F21CF35FDA007C9990 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC048F11CF35FDA007C9990 /* block.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +173,9 @@
 		FF2A92221CE0ECF000B424CA /* LevelOneScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelOneScene.h; sourceTree = "<group>"; };
 		FF2A92241CE0F09700B424CA /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 		FF2A92261CE0F34000B424CA /* ball.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ball.jpg; sourceTree = "<group>"; };
+		FF615F491CFD9CD00017B925 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
+		FF8FB6BE1CFC845C00CDB531 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		FFC048F11CF35FDA007C9990 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +297,9 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FF615F491CFD9CD00017B925 /* bar.png */,
+				FF8FB6BE1CFC845C00CDB531 /* images */,
+				FFC048F11CF35FDA007C9990 /* block.png */,
 				FF2A92261CE0F34000B424CA /* ball.jpg */,
 				FF2A92241CE0F09700B424CA /* ball.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
@@ -459,7 +468,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF8FB6BF1CFC845C00CDB531 /* images in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				FFC048F21CF35FDA007C9990 /* block.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
@@ -468,6 +479,7 @@
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
+				FF615F4A1CFD9CD00017B925 /* bar.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
