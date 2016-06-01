@@ -89,13 +89,14 @@ bool LevelOne::init()
     //************ BARRA ************
     spriteBar = Sprite::create("bar.png");
     spriteBar->setScale(0.5);
-    spriteBar->setPosition(Vec2(origin.x,
+    spriteBar->setPosition(Vec2(visibleSize.width/2,
                                 origin.y));
     this->addChild(spriteBar, 0);
     // Creamos el body
     auto pbBar = PhysicsBody::createBox(spriteBar->getContentSize(), PhysicsMaterial(0.1f, 1.0f, 0.0f));
     pbBar->setDynamic(false);
     pbBar->setGravityEnable(false);
+    //pbBar->applyForce(Vec2(100, 100));
     spriteBar->addComponent(pbBar);
     
     //************ MURO ************
@@ -105,7 +106,8 @@ bool LevelOne::init()
     
     // Edge para que solo sea los bordes
     Vec2 puntos[4] = { Vec2(0,0), Vec2(0, visibleSize.height), Vec2(visibleSize.width, visibleSize.height), Vec2(visibleSize.width,0) };
-    auto pbMuro = PhysicsBody::createEdgeChain(puntos, 4);
+    auto pbMuro = PhysicsBody::createEdgeChain(puntos, 4, PhysicsMaterial(0.1f, 1.0f, 0.0f));
+    //pbMuro->applyForce(Vec2(1000,1000));
     muro->addComponent(pbMuro);
     
     //************ PRUEBASSSS ************
