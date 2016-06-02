@@ -35,6 +35,16 @@ bool LevelOne::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
+    //************ LABEL ************
+    auto label = Label::createWithTTF("Level 1", "fonts/Marker Felt.ttf", 24);
+    
+    // position the label on the center of the screen
+    label->setPosition(Vec2(origin.x + visibleSize.width/2,
+                            origin.y + visibleSize.height - label->getContentSize().height));
+    
+    // add the label as a child to this layer
+    this->addChild(label, 1);
+    
     //************ BLOQUES ************
     int i;
     int j;
@@ -50,106 +60,81 @@ bool LevelOne::init()
             sprite->setPosition(Vec2(i*80 + origin.x, visibleSize.height - (j*20 +origin.y)));
             //sprite->setScale(visibleSize.width / sprite->getContentSize().width/4, visibleSize.width / sprite->getContentSize().width/6 );
             matrixSprites[i][j] = (cocos2d::Sprite*)sprite;
-            this->addChild(sprite);
-            auto pbSprite = PhysicsBody::createBox(sprite->getContentSize(), PhysicsMaterial(5.0, 0.0, 0.0));
+            auto pbSprite = PhysicsBody::createBox(sprite->getContentSize(), PhysicsMaterial(0, 1.0, 0.0));
+            
+            pbSprite->setCollisionBitmask(5);
+            pbSprite->setContactTestBitmask(true);
+            
             pbSprite->setDynamic(false);
-            pbSprite->setGravityEnable(false);
             sprite->addComponent(pbSprite);
+            this->addChild(sprite);
         }
     }
     
-    //************ LABEL ************
-    auto label = Label::createWithTTF("Level 1", "fonts/Marker Felt.ttf", 24);
-    
-    // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
-
-    // add the label as a child to this layer
-    this->addChild(label, 1);
-    
     //************ BOLA ************
     spriteBall = Sprite::create("ball.png");
+    // Generate polygon info automatically.
+    //auto pinfo = AutoPolygon::generatePolygon("block.png");
+    // Create a sprite with polygon info.
+    //auto spriteBall = Sprite::create(pinfo);
+    
+    
     spriteBall->setScale(0.05);
     
     // position the sprite on the center of the screen
     spriteBall->setPosition(Vec2(visibleSize.width/8, origin.y));
     
-    // add the sprite as a child to this layer
-    this->addChild(spriteBall, 0);
     // Creamos el body
-    auto pbBall = PhysicsBody::createCircle(spriteBall->getContentSize().width/2, PhysicsMaterial(0.1f, 1.0f, 0.0f));
+    //auto pbBall = PhysicsBody::createCircle(spriteBall->getContentSize().width/2, PhysicsMaterial(0.1f, 0.0f, 0.0f));
+    pbBall = PhysicsBody::createCircle(spriteBall->getContentSize().width / 2, PhysicsMaterial(1, 1, 0));
+    // Colisión
+    pbBall->setCollisionBitmask(1);
+    pbBall->setContactTestBitmask(true);
+    
     pbBall->setGravityEnable(false);
-    pbBall->setVelocity(Vec2(200, 200));
-    pbBall->setVelocityLimit(500);
+    pbBall->setVelocity(Vec2(0, 200));
+    //pbBall->setAngularVelocity(5.0f);
+    //pbBall->setVelocityLimit(500);
     
     // Asociamos la física al sprite
     spriteBall->addComponent(pbBall);
+    // add the sprite as a child to this layer
+    this->addChild(spriteBall, 0);
     
     //************ BARRA ************
     spriteBar = Sprite::create("bar.png");
     spriteBar->setScale(0.5);
     spriteBar->setPosition(Vec2(visibleSize.width/2,
                                 origin.y));
-    this->addChild(spriteBar, 0);
+    
     // Creamos el body
-    auto pbBar = PhysicsBody::createBox(spriteBar->getContentSize(), PhysicsMaterial(0.1f, 1.0f, 0.0f));
+    pbBar = PhysicsBody::createBox(spriteBar->getContentSize(), PhysicsMaterial(0.0f, 1.0f, 0.0f));
+    
+    pbBar->setCollisionBitmask(2);
+    pbBar->setContactTestBitmask(true);
+    
     pbBar->setDynamic(false);
     pbBar->setGravityEnable(false);
     //pbBar->applyForce(Vec2(100, 100));
     spriteBar->addComponent(pbBar);
+    this->addChild(spriteBar, 0);
     
     //************ MURO ************
     auto muro = Node::create();
-    muro->setPosition(Vec2(0,0));
-    this->addChild(muro, 0);
+    muro->setPosition(Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+    
     
     // Edge para que solo sea los bordes
-    Vec2 puntos[4] = { Vec2(0,0), Vec2(0, visibleSize.height), Vec2(visibleSize.width, visibleSize.height), Vec2(visibleSize.width,0) };
-    auto pbMuro = PhysicsBody::createEdgeChain(puntos, 4, PhysicsMaterial(0.1f, 1.0f, 0.0f));
+    //Vec2 puntos[4] = { Vec2(0,0), Vec2(0, visibleSize.height), Vec2(visibleSize.width, visibleSize.height), Vec2(visibleSize.width,0) };
+    //auto pbMuro = PhysicsBody::createEdgeChain(puntos, 4, PhysicsMaterial(1.0f, 1.0f, 0.0f));
+    //auto pbMuro = PhysicsBody::createEdgeChain(puntos, 4, PHYSICSBODY_MATERIAL_DEFAULT);
+    auto pbMuro = PhysicsBody::createEdgeBox(visibleSize, PhysicsMaterial(0, 1, 0), 3);
+    
+    pbMuro->setDynamic(false);
+    pbMuro->setGravityEnable(false);
     //pbMuro->applyForce(Vec2(1000,1000));
     muro->addComponent(pbMuro);
-    
-    //************ PRUEBASSSS ************
-    /*
-    auto spritePrueba = Sprite::create("ball.png");
-    spritePrueba->setScale(0.05);
-    auto physicsBodyPrueba = PhysicsBody::createCircle(spritePrueba->getContentSize().width/2, PhysicsMaterial(0.1f, 1.0f, 0.0f));
-    physicsBodyPrueba->setDynamic(false);
-    //create a sprite
-    spritePrueba->setPosition(Vec2(visibleSize.width/2, visibleSize.height/2));
-    addChild(spritePrueba);
-    //apply physicsBody to the sprite
-    spritePrueba->addComponent(physicsBodyPrueba);
-    
-    //add five dynamic bodies
-    for (int i = 0; i < 5; ++i)
-    {
-        physicsBodyPrueba = PhysicsBody::createCircle(spritePrueba->getContentSize().width/2,
-                                         PhysicsMaterial(0.1f, 0.0f, 0.0f));
-        //set the body isn't affected by the physics world's gravitational force
-        physicsBodyPrueba->setGravityEnable(false);
-        //set initial velocity of physicsBody
-        //physicsBodyPrueba->setVelocity(Vec2(cocos2d::random(-500,500),
-        //                                    cocos2d::random(-500,500)));
-        //physicsBodyPrueba->setAngularVelocity(50.0);
-        physicsBodyPrueba->setVelocity(Vec2(400, 400));
-        physicsBodyPrueba->setVelocityLimit(500);
-        
-        // TODO: Aplicar fuerza cuando choca contra la barra (paredes tambien?)
-        //physicsBodyPrueba->applyForce(Vec2(100, 300));
-        
-        physicsBodyPrueba->setTag(1);
-        spritePrueba = Sprite::create("ball.png");
-        spritePrueba->setScale(0.05);
-        //spritePrueba->setPosition(Vec2(visibleSize.width/2 + cocos2d::random(-300,300),
-        //                     visibleSize.height/2 + cocos2d::random(-300,300)));
-        spritePrueba->setPosition(origin.x+10,
-                                  origin.y+10);
-        spritePrueba->addComponent(physicsBodyPrueba);
-        addChild(spritePrueba);
-    }*/
-    // ************
+    this->addChild(muro, 0);
     
     //************ FECHAS ************
     // Arrow right sprite
@@ -201,9 +186,33 @@ bool LevelOne::init()
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerLeftRight, node_left);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listenerLeftRight->clone(), node_right);
     
+    auto contactListener = EventListenerPhysicsContact::create();
+    contactListener->onContactBegin = CC_CALLBACK_1(LevelOne::onContactBegin, this);
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
+    
+    
     // Llamada para que empiece el bucle del juego
     this->scheduleUpdate();
     
+    return true;
+}
+
+bool LevelOne::onContactBegin(cocos2d::PhysicsContact &contact) {
+    PhysicsBody *a = contact.getShapeA()->getBody();
+    PhysicsBody *b = contact.getShapeB()->getBody();
+    
+    if ( (1 == a->getCollisionBitmask() && 2 == b->getCollisionBitmask() ) || (2 == a->getCollisionBitmask() && 1 == b->getCollisionBitmask()) ) {
+        //CCLOG("Chocaron!!! PUM!");
+        //pbBar->applyForce(Vec2(100, 100));
+        pbBall->applyImpulse(Vec2(200,0));
+        
+    }
+    if (1 == a->getCollisionBitmask() && 5 == b->getCollisionBitmask() ) {
+        b->getNode()->removeFromParentAndCleanup(true);
+    }
+    else if (5 == a->getCollisionBitmask() && 1 == b->getCollisionBitmask()) {
+        a->getNode()->removeFromParentAndCleanup(true);
+    }
     return true;
 }
 

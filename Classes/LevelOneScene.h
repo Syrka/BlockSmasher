@@ -11,6 +11,8 @@ private:
     cocos2d::Sprite* spriteBall;
     // Dirección derecha o izquierda (1,0 ó -1,0)
     cocos2d::Vec2 delta = cocos2d::Vec2(0,0);
+    cocos2d::PhysicsBody* pbBar;
+    cocos2d::PhysicsBody* pbBall;
 public:
     static cocos2d::Scene* createScene();
     
@@ -22,6 +24,8 @@ public:
     void menuCloseCallback(cocos2d::Ref* pSender);
     
     void update(float);
+    
+    bool onContactBegin(cocos2d::PhysicsContact &contact);
     
     // implement the "static create()" method manually
     CREATE_FUNC(LevelOne);
