@@ -70,6 +70,7 @@
 		ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7B1B68A1F400C3958E /* libiconv.dylib */; };
 		ED545A7E1B68A1FA00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A7D1B68A1FA00C3958E /* libiconv.dylib */; };
 		FF2A53501D00717C00D0829E /* ball_pixel.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2A534F1D00717C00D0829E /* ball_pixel.png */; };
+		FF2A53521D0090B600D0829E /* ball2.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2A53511D0090B600D0829E /* ball2.png */; };
 		FF2A92231CE0ECF000B424CA /* LevelOneScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF2A92211CE0ECF000B424CA /* LevelOneScene.cpp */; };
 		FF2A92251CE0F09700B424CA /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2A92241CE0F09700B424CA /* ball.png */; };
 		FF2A92271CE0F34000B424CA /* ball.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF2A92261CE0F34000B424CA /* ball.jpg */; };
@@ -171,6 +172,7 @@
 		ED545A7B1B68A1F400C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		ED545A7D1B68A1FA00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		FF2A534F1D00717C00D0829E /* ball_pixel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball_pixel.png; sourceTree = "<group>"; };
+		FF2A53511D0090B600D0829E /* ball2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball2.png; sourceTree = "<group>"; };
 		FF2A92211CE0ECF000B424CA /* LevelOneScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LevelOneScene.cpp; sourceTree = "<group>"; };
 		FF2A92221CE0ECF000B424CA /* LevelOneScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelOneScene.h; sourceTree = "<group>"; };
 		FF2A92241CE0F09700B424CA /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FF2A53511D0090B600D0829E /* ball2.png */,
 				FF2A534F1D00717C00D0829E /* ball_pixel.png */,
 				FF615F491CFD9CD00017B925 /* bar.png */,
 				FF8FB6BE1CFC845C00CDB531 /* images */,
@@ -480,6 +483,7 @@
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
+				FF2A53521D0090B600D0829E /* ball2.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				FF615F4A1CFD9CD00017B925 /* bar.png in Resources */,

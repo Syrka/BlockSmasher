@@ -6,13 +6,17 @@
 class LevelOne : public cocos2d::Layer
 {
 private:
+    cocos2d::Vec2 origin = cocos2d::Vec2(0,0);
     bool pressed = false;
     cocos2d::Sprite* spriteBar;
     cocos2d::Sprite* spriteBall;
+    cocos2d::Sprite* spriteBall2;
     // Dirección derecha o izquierda (1,0 ó -1,0)
     cocos2d::Vec2 delta = cocos2d::Vec2(0,0);
     cocos2d::PhysicsBody* pbBar;
     cocos2d::PhysicsBody* pbBall;
+    cocos2d::PhysicsBody* pbBall2;
+    double coso = 0.0;
 public:
     static cocos2d::Scene* createScene();
     
