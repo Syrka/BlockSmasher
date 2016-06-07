@@ -36,7 +36,8 @@ bool MenuScene::init()
     
     // Menu Item Font
     
-    auto item = MenuItemFont::create("Vamos a jugar");
+    auto item = MenuItemFont::create(">> BlockSmasher <<");
+    item->setPositionY(visibleSize.height/3);
     item->retain();
     auto play = MenuItemFont::create("Play", CC_CALLBACK_1(MenuScene::playGame, this));
     play->setPosition(Vec2(0,50));
@@ -51,6 +52,7 @@ bool MenuScene::init()
                                           "CloseSelected.png",
                                           CC_CALLBACK_1(MenuScene::playGame, this));*/
     // Añado el item al menu
+    menu->addChild(item);
     menu->addChild(play);
     menu->addChild(quit);
     // Añado el menu a la escena
