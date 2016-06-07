@@ -17,6 +17,7 @@ private:
     cocos2d::PhysicsBody* pbBall;
     cocos2d::PhysicsBody* pbBall2;
     double coso = 0.0;
+    int blockCounter = 24;
 public:
     static cocos2d::Scene* createScene();
     
@@ -28,6 +29,8 @@ public:
     void menuCloseCallback(cocos2d::Ref* pSender);
     
     void update(float);
+    
+    void goToMenu();
     
     bool onContactBegin(cocos2d::PhysicsContact &contact);
     

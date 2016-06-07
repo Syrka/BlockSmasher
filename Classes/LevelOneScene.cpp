@@ -222,9 +222,11 @@ bool LevelOne::onContactBegin(cocos2d::PhysicsContact &contact) {
     }
     if (1 == a->getCollisionBitmask() && 5 == b->getCollisionBitmask() ) {
         b->getNode()->removeFromParentAndCleanup(true);
+        blockCounter--;
     }
     else if (5 == a->getCollisionBitmask() && 1 == b->getCollisionBitmask()) {
         a->getNode()->removeFromParentAndCleanup(true);
+        blockCounter--;
     }
     if ( (1 == a->getCollisionBitmask() && 10 == b->getCollisionBitmask() ) || (10 == a->getCollisionBitmask() && 1 == b->getCollisionBitmask()) ) {
         
@@ -239,10 +241,13 @@ bool LevelOne::onContactBegin(cocos2d::PhysicsContact &contact) {
             pbBall->getNode()->removeFromParentAndCleanup(true);
             
             // Go to menu
-            auto sceneMenu = MenuScene::createScene();
-            // run
-            Director::getInstance()->replaceScene(sceneMenu);
+            goToMenu();
         }
+    }
+    
+    CCLOG("%d", blockCounter);
+    if (blockCounter == 0) {
+        goToMenu();
     }
     
     return true;
@@ -252,6 +257,13 @@ void LevelOne::update(float dd)
 {
     if (pressed)
         spriteBar->setPosition(spriteBar->getPosition() + delta);
+}
+
+void LevelOne::goToMenu() {
+    // Go to menu
+    auto sceneMenu = MenuScene::createScene();
+    // run
+    Director::getInstance()->replaceScene(sceneMenu);
 }
 
 
