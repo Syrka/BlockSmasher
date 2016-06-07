@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "LevelOneScene.h"
+#include "MenuScene.h"
 
 USING_NS_CC;
 
@@ -75,7 +75,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = LevelOne::createScene();
+    auto scene = MenuScene::createScene();
 
     // run
     director->runWithScene(scene);

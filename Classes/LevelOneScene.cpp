@@ -1,4 +1,5 @@
 #include "LevelOneScene.h"
+#include "MenuScene.h"
 
 USING_NS_CC;
 
@@ -9,7 +10,7 @@ Scene* LevelOne::createScene()
     //scene->getPhysicsWorld()->setGravity(Vec2(0, 98));
     scene->getPhysicsWorld()->setGravity(Vec2(0, 0));
     // Info
-    scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+    //scene->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
     
     // 'layer' is an autorelease object
     auto layer = LevelOne::create();
@@ -36,6 +37,19 @@ bool LevelOne::init()
     origin = Director::getInstance()->getVisibleOrigin();
     coso = origin.y;
     CCLOG("%s %f", "coso", coso);
+    
+    //************ EXIT BUTTON ************
+    auto closeItem = MenuItemImage::create(
+                                           "CloseNormal.png",
+                                           "CloseSelected.png",
+                                           CC_CALLBACK_1(LevelOne::menuCloseCallback, this));
+    
+    closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
+                                origin.y + visibleSize.height - closeItem->getContentSize().height/2));
+    // create menu, it's an autorelease object
+    auto menu = Menu::create(closeItem, NULL);
+    menu->setPosition(Vec2::ZERO);
+    this->addChild(menu, 1);
     
     //************ LABEL ************
     auto label = Label::createWithTTF("Level 1", "fonts/Marker Felt.ttf", 24);
@@ -78,7 +92,7 @@ bool LevelOne::init()
     
     // position the sprite on the center of the screen
     spriteBall->setPosition(Vec2(0, 0));
-    spriteBall->setPosition(Vec2(visibleSize.width/2 + 10, origin.y));
+    spriteBall->setPosition(Vec2(visibleSize.width/2 + 10, origin.y + 50));
     spriteBall->setAnchorPoint(Vec2(0.5,0.5));
     
     // Creamos el body
@@ -223,6 +237,11 @@ bool LevelOne::onContactBegin(cocos2d::PhysicsContact &contact) {
             addChild(emitter, 10);
             
             pbBall->getNode()->removeFromParentAndCleanup(true);
+            
+            // Go to menu
+            auto sceneMenu = MenuScene::createScene();
+            // run
+            Director::getInstance()->replaceScene(sceneMenu);
         }
     }
     

@@ -75,6 +75,7 @@
 		FF2A92251CE0F09700B424CA /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = FF2A92241CE0F09700B424CA /* ball.png */; };
 		FF2A92271CE0F34000B424CA /* ball.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FF2A92261CE0F34000B424CA /* ball.jpg */; };
 		FF615F4A1CFD9CD00017B925 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = FF615F491CFD9CD00017B925 /* bar.png */; };
+		FF81D3771D06B43900AA5CEA /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF81D3751D06B43900AA5CEA /* MenuScene.cpp */; };
 		FF8FB6BF1CFC845C00CDB531 /* images in Resources */ = {isa = PBXBuildFile; fileRef = FF8FB6BE1CFC845C00CDB531 /* images */; };
 		FFC048F21CF35FDA007C9990 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = FFC048F11CF35FDA007C9990 /* block.png */; };
 /* End PBXBuildFile section */
@@ -178,6 +179,8 @@
 		FF2A92241CE0F09700B424CA /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 		FF2A92261CE0F34000B424CA /* ball.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ball.jpg; sourceTree = "<group>"; };
 		FF615F491CFD9CD00017B925 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
+		FF81D3751D06B43900AA5CEA /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
+		FF81D3761D06B43900AA5CEA /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		FF8FB6BE1CFC845C00CDB531 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		FFC048F11CF35FDA007C9990 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -321,6 +324,8 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FF81D3751D06B43900AA5CEA /* MenuScene.cpp */,
+				FF81D3761D06B43900AA5CEA /* MenuScene.h */,
 				FF2A92211CE0ECF000B424CA /* LevelOneScene.cpp */,
 				FF2A92221CE0ECF000B424CA /* LevelOneScene.h */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
@@ -425,6 +430,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = 627LWAN845;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "BlockSmasher" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -533,6 +543,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				FF81D3771D06B43900AA5CEA /* MenuScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +578,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -592,6 +604,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
@@ -604,6 +617,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -627,6 +641,7 @@
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
 				);
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(_COCOS_HEADER_IOS_BEGIN) $(_COCOS_HEADER_IOS_END)";
